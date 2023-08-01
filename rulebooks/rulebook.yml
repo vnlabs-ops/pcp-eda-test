@@ -6,7 +6,7 @@
         port: 5000
   rules:
     - name: Test
-      condition: event.payload.pcp.pmie.rule == "test"
+      condition: "test" == "test"
       action:
         run_job_template:
           name: eda-test
