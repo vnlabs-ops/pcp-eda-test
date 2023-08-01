@@ -5,8 +5,14 @@
         host: 0.0.0.0
         port: 5000
   rules:
-   - name:  test
-     condition: event.payload is defined
-     action:
-       debug:
-         msg: "Received: {{ event.payload }}"
+    - name: Test
+      condition: event.payload.pcp.pmie.rule == "Test actions"
+      action:
+        run_job_template:
+          name: eda-test
+          organization: Default
+          job_args:
+            extra_vars:
+               message: from eda
+               sleep: 1
+               
