@@ -13,6 +13,6 @@
           organization: Default
           job_args:
             extra_vars:
-               message: {{ event.payload.pcp.pmie.values }}
+               message: "{{ event.payload.pcp.pmie.values }}"
                sleep: 1
                
