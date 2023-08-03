@@ -6,7 +6,8 @@
         port: 5000
   rules:
     - name: Test
-      condition: event.payload.pcp.pmie.rule == "Test actions"
+      #condition: event.payload.pcp.pmie.rule == "Test actions"
+      condition: event.payload is defined
       action:
         run_job_template:
           name: eda-test
@@ -14,11 +15,12 @@
           job_args:
             extra_vars:
                message: from eda
-               host: "{{ event.payload | regex_search('@(\\S+)', '\\1') | first }}"
+               payload_values: "{{ event.payload.pcp.pmie.values }}"
                sleep: 1
                
     - name:  test
       condition: event.payload is defined
       action:
         debug:
-          msg: "Received: {{ event.payload }} from host {{ event.payload | regex_search('@(\\S+)', '\\1') | first }}"
+          #msg: "Received: {{ event.payload }} from host {{ event.payload | regex_search('@(\\S+)', '\\1') | first }}"
+          msg: "Received: {{ event.payload.pcp.pmie.values }}"
