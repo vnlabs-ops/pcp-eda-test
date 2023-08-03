@@ -15,7 +15,7 @@
           job_args:
             extra_vars:
                message: from eda
-               payload_values: {{ event.payload.pcp.pmie.values }}
+               payload: "{{ event.payload.pcp.pmie.values }}"
                sleep: 1
                
     - name:  test
