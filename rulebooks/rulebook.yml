@@ -13,6 +13,11 @@
           organization: Default
           job_args:
             extra_vars:
-               message: "{{ event.payload.pcp.pmie.values }}"
+               message: from eda
                sleep: 1
                
+    - name:  test
+      condition: event.payload is defined
+      action:
+        debug:
+          msg: "Received: {{ event.payload }}"
