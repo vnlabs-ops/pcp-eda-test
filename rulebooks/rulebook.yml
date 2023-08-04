@@ -5,18 +5,17 @@
         host: 0.0.0.0
         port: 5000
   rules:
-    - name: Test
-      #condition: event.payload.pcp.pmie.rule == "Test actions"
-      condition: event.payload is defined
+    - name: Respond to PMIE rule for High average processor utilization
+      condition: event.payload.pcp.pmie.rule == "High average processor utilization"      
       action:
         run_job_template:
           name: eda-test
           organization: Default
-          job_args:
-            extra_vars:
-               message: from eda
+#          job_args:
+#            extra_vars:
+#               message: from eda
                #payload: "{{ event.payload.pcp.pmie.values }}"
-               sleep: 1
+#               sleep: 1
                
     - name:  test
       condition: event.payload is defined
