@@ -6,7 +6,7 @@
         port: 5000
   rules:
     - name: Respond to PMIE rule for High average processor utilization
-      condition: event.payload.pcp.pmie.rule == "High average processor utilization"      
+      condition: event.payload.pcp.pmie.rule == "High 1-minute load average"      
       action:
         run_job_template:
           name: pcp-eda-test
